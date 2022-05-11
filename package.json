@@ -4,7 +4,7 @@
   "main": "app/js/main.js",
   "type": "module",
   "scripts": {
-    "cy:run": "cypress run",
+    "cy:run": "yarn start & cypress run",
     "start": "node index.js",
     "stylelint": "stylelint \"**/*.css\"",
     "w3c": "html-validator --file ./source/public/index.html  --verbose",
