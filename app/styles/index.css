@@ -5,3 +5,15 @@
 main {
     display: flex;
 }
+
+.btnbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.btnbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
