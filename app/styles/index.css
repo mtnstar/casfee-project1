@@ -12,8 +12,33 @@ main {
     margin: 10px;
 }
 
-.btnbar {
-    display: flex;
-    justify-content: space-between;
+task {
     margin: 10px;
+    border-bottom: 1px solid grey;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.c1,
+.c2 {
+    display: flex;
+    width: 30%;
+}
+
+.c3 {
+    display: flex;
+    width: 30%;
+    float: inline-end;
+}
+
+.c2-3 {
+    flex-grow: 1;
+}
+
+.c4 {
+    flex-grow: 1;
+    width: 30px;
 }
