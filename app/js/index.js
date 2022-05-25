@@ -13,8 +13,28 @@ function fetchTasks() {
         });
 }
 
-const btn1 = document.querySelector('#btn-name')
+// const btn1 = document.querySelector('#btn-name')
 
-btn1.addEventListener('click', function() {
-    fetchTasks();
-});
+// btn1.addEventListener('click', function() {
+    // fetchTasks();
+// });
+//
+
+function action_taskEdit(event) {
+    console.log(event);
+}
+
+function attachEventHandlers() {
+    const buttons = document.querySelectorAll("button");
+    for (const button of buttons) {
+        button.addEventListener('click', buttonClick);
+    }
+}
+
+function buttonClick(event) {
+    const id = event.target.getAttribute("id");
+    const action = `action_${id}`;
+    eval(action)(event);
+}
+
+attachEventHandlers();
