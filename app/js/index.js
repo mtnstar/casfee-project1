@@ -20,6 +20,12 @@ function fetchTasks() {
 // });
 //
 
+function renderTasks() {
+    const template = Handlebars.compile(document.querySelector("#task-template").innerHTML);
+    const tasksContainer = document.querySelector("#tasks");
+    tasksContainer.innerHTML = template();
+}
+
 function action_taskEdit(event) {
     console.log(event);
 }
@@ -27,7 +33,8 @@ function action_taskEdit(event) {
 function attachEventHandlers() {
     const buttons = document.querySelectorAll("button");
     for (const button of buttons) {
-        button.addEventListener('click', buttonClick);
+        button.addEventListener('click',
+            (event) => buttonClick(event));
     }
 }
 
@@ -37,4 +44,8 @@ function buttonClick(event) {
     eval(action)(event);
 }
 
+renderTasks();
 attachEventHandlers();
+
+document.addEventListener("DOMContentLoaded",
+    () => console.log('ready'));
