@@ -1,9 +1,33 @@
-* {
-    box-sizing: border-box;
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #ffffe0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 18px;
+    margin-right: 10px;
+}
+
+button:hover {
+    filter: brightness(70%);
+}
+
+button:focus {
+    filter: invert(100%);
 }
 
 .btnbar {
@@ -12,33 +36,35 @@ main {
     margin: 10px;
 }
 
-task {
+.task {
     margin: 10px;
     border-bottom: 1px solid grey;
+    height: 80px;
 }
 
-.row {
+.task-row {
     display: flex;
     flex-direction: row;
+    height: 50%;
 }
 
-.c1,
-.c2 {
+.task-c1,
+.task-c2 {
     display: flex;
     width: 30%;
 }
 
-.c3 {
+.task-c3 {
     display: flex;
     width: 30%;
     float: inline-end;
 }
 
-.c2-3 {
+.task-c2-3 {
     flex-grow: 1;
 }
 
-.c4 {
+.task-c4 {
     flex-grow: 1;
     width: 30px;
 }
