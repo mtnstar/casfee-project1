@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Note App</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
-  <script src="js/controllers/tasks-controller.js" type="module" defer></script>
+  <script src="js/app.js" type="module" defer></script>
 
   <link rel="stylesheet" href="styles/index.css">
 
@@ -26,6 +26,45 @@
         <div class="task-c2-3">Anrufen</div>
       </div>
     </div>
+  </script>
+
+  <script id="task-form-template" type="text/x-handlebars-template">
+    <form id="form" action="./index.html" action="POST">
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" />
+
+        <br />
+
+        <label for="importance">Importance</label>
+        <select name="importance" id="importance">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <br />
+
+        <input id="finished" type="checkbox" name="finished" />
+        <label for="finished">Finished</label>
+
+        <br />
+
+        <label for="duedate">Due Date</label>
+        <input id="duedate" type="date" name="duedate" />
+
+        <br />
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+
+        <br />
+
+        <button type="submit">Update</button>
+        <button type="submit">Update & Overview</button>
+        <button type="submit">Overview</button>
+      </form>
   </script>
 </head>
 <body>

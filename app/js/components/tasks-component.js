@@ -1,13 +1,16 @@
-import {TasksService} from '../services/tasks-service.js';
+import {BaseComponent} from "./base-component.js";
 
-export class TasksController {
-    constructor() {
-        this.tasksService = new TasksService();
+export class TasksComponent extends BaseComponent {
+    constructor(app) {
+        super(app);
+        this.tasksService = app.tasksService;
     }
 
     renderTasks() {
-        const json = await this.tasksService.fetchTasks();
-        console.log(json);
+        const template = Handlebars.compile(document.querySelector("#task-template").innerHTML);
+        const tasksContainer = document.querySelector("#tasks");
+        tasksContainer.innerHTML = template();
+        // console.log(json);
         // this.tasksService.fetchTasks().then((json) => {
                 // const template = Handlebars.compile(document.querySelector("#task-template").innerHTML);
                 // const tasksContainer = document.querySelector("#tasks");
@@ -40,7 +43,3 @@ export class TasksController {
         this.attachEventHandlers();
     }
 }
-
-// create one-and-only instance
-document.addEventListener("DOMContentLoaded",
-    () => new TasksController().initialize());
