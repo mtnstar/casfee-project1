@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="styles/index.css">
 
-  <script id="task-template" type="text/x-handlebars-template">
+  <script id="tasks-task-template" type="text/x-handlebars-template">
     <div class="task">
       <div class="task-row">
         <div class="task-c1">i a day</div>
@@ -28,7 +28,24 @@
     </div>
   </script>
 
-  <script id="task-form-template" type="text/x-handlebars-template">
+  <script id="toolbar-template" type="text/x-handlebars-template">
+    <div class="btnbar">
+          <button id="createTask">Create new todo</button>
+          <button>Toggle Style</button>
+        </div>
+
+        <div class="btnbar">
+          <div>
+            <button id="btn-name">Name</button>
+            <button>By Due Date</button>
+            <button>By Creation Date</button>
+            <button>By Importance</button>
+          </div>
+          <button>Filter Completed</button>
+        </div>
+  </script>
+
+  <script id="taskForm-template" type="text/x-handlebars-template">
     <form id="form" action="./index.html" action="POST">
         <label for="title">Title</label>
         <input id="title" type="text" name="title" />
@@ -72,19 +89,7 @@
   <main>
     <div class="col1">
 
-      <div class="btnbar">
-        <button>Create new todo</button>
-        <button>Toggle Style</button>
-      </div>
-
-      <div class="btnbar">
-        <div>
-          <button id="btn-name">Name</button>
-          <button>By Due Date</button>
-          <button>By Creation Date</button>
-          <button>By Importance</button>
-        </div>
-        <button>Filter Completed</button>
+      <div id="toolbar">
       </div>
 
       <div id="tasks">
@@ -93,42 +98,7 @@
     </div>
 
     <div class="col2">
-      <form id="form" action="./index.html" action="POST">
-        <label for="title">Title</label>
-        <input id="title" type="text" name="title" />
-
-        <br />
-
-        <label for="importance">Importance</label>
-        <select name="importance" id="importance">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-
-        <br />
-
-        <input id="finished" type="checkbox" name="finished" />
-        <label for="finished">Finished</label>
-
-        <br />
-
-        <label for="duedate">Due Date</label>
-        <input id="duedate" type="date" name="duedate" />
-
-        <br />
-
-        <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
-
-        <br />
-
-        <button type="submit">Update</button>
-        <button type="submit">Update & Overview</button>
-        <button type="submit">Overview</button>
-      </form>
+      <div id="taskForm"></div>
     </div>
   </main>
 

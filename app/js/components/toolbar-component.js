@@ -5,6 +5,16 @@ export class ToolbarComponent extends BaseComponent {
         super(app);
     }
 
+    renderToolbar() {
+        this.container.innerHTML = this.template()();
+    }
+
+    action_createTask(event) {
+        console.log(event);
+    }
+
     initialize() {
+        this.renderToolbar();
+        this.attachEventHandlers();
     }
 }
