@@ -46,7 +46,7 @@
   </script>
 
   <script id="taskForm-template" type="text/x-handlebars-template">
-    <form id="form" action="./index.html" action="POST">
+    <form id="task-form" action="./index.html" action="POST">
         <label for="title">Title</label>
         <input id="title" type="text" name="title" />
 
@@ -63,8 +63,10 @@
 
         <br />
 
-        <input id="finished" type="checkbox" name="finished" />
-        <label for="finished">Finished</label>
+        <div class="control">
+          <input class="check" id="finished" type="checkbox" name="finished" />
+          <label class="check" for="finished">Finished</label>
+        </div>
 
         <br />
 
