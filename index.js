@@ -1,9 +1,8 @@
 import express from 'express';
 
-const app = express();
 const port = 3333;
 
-app.use(express.static('app'));
+const app = (await import('./backend/server.js')).app;
 
 app.listen(port, () => {
     // eslint-disable-next-line no-console

@@ -8,7 +8,7 @@
     "start": "node index.js",
     "stylelint": "stylelint \"**/*.css\"",
     "w3c": "html-validator --file ./source/public/index.html  --verbose",
-    "eslint": "eslint \"**/*.js\"",	
+    "eslint": "eslint \"**/*.js\"",
     "all": "npm run stylelint && npm run w3c  && npm run eslint  && node -e \"console.log('npm run all completed')\""
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "stylelint-config-standard": "^25.0.0"
   },
   "dependencies": {
-    "express": "^4.18.0"
+    "express": "^4.18.0",
+    "sqlite3": "^5.0.8"
   }
 }
