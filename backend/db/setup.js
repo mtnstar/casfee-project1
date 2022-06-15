@@ -23,15 +23,24 @@ async function createTasks() {
       id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
       title VARCHAR NOT NULL,
       importance INTEGER DEFAULT 1 NOT NULL,
-      description VARCHAR,
-      duedate TEXT NOT NULL
+      finished BOOLEAN DEFAULT false NOT NULL,
+      duedate TEXT NOT NULL,
+      description VARCHAR
     );
+  `);
+}
+
+async function insertTask() {
+    await db.run(`
+      INSERT INTO tasks (title, importance, finished, duedate, description)
+      VALUES ("task", 3, false, "15.6.2022", "seeded entry");
   `);
 }
 
 async function run() {
     await createDB(); 
     await createTasks();
+    await insertTask();
 }
 
 run().catch((ex) => {
