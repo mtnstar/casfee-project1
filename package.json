@@ -6,6 +6,7 @@
   "scripts": {
     "cy:run": "yarn start & cypress run",
     "start": "node index.js",
+    "dbsetup": "node backend/db/setup.js",
     "stylelint": "stylelint \"**/*.css\"",
     "w3c": "html-validator --file ./source/public/index.html  --verbose",
     "eslint": "eslint \"**/*.js\"",
