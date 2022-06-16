@@ -3,23 +3,22 @@ import {TaskAdapter} from "../adapters/task-adapter.js";
 export class TasksController {
 
     constructor() {
-        this.taskAdapter = new TaskAdapter;
+        this.taskAdapter = new TaskAdapter();
     }
 
-    async index() {
+    index = async(req, res) => {
         let entries = await this.taskAdapter.all();
-        console.log(entries);
+        res.json(entries || []);
     }
 
-    show(){
-    }
+    // show(){
+    // }
 
-    create() {
-    }
+    // create() {
+    // }
 
-    delete() {
-    }
+    // delete() {
+    // }
 }
 
 export const tasksController = new TasksController();
-console.log(tasksController.index());
