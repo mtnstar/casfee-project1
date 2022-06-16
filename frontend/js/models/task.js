@@ -7,4 +7,14 @@ export class Task {
         this.duedate = duedate;
         this.description = description;
     }
+
+    static fromJSON(json) {
+        return new this(
+            json.id,
+            json.title,
+            json.importance,
+            json.finished,
+            json.duedate,
+            json.description);
+    }
 }

@@ -5,6 +5,8 @@ import {TasksService} from './services/tasks-service.js';
 
 class App {
     constructor() {
+        this.initServices();
+
         this.tasksComponent = new TasksComponent(this);
         this.toolbarComponent = new ToolbarComponent(this);
         this.taskFormComponent = new TaskFormComponent(this);
@@ -12,8 +14,6 @@ class App {
         this.tasksComponent.initialize();
         this.toolbarComponent.initialize();
         this.taskFormComponent.initialize();
-
-        this.initServices();
     }
 
     initServices() {

@@ -1,3 +1,4 @@
+import {Task} from "../models/task.js";
 import {BaseComponent} from "./base-component.js";
 
 export class TasksComponent extends BaseComponent {
@@ -6,15 +7,15 @@ export class TasksComponent extends BaseComponent {
         this.tasksService = app.tasksService;
     }
 
-    renderTasks() {
-        this.container.innerHTML = this.template('task')();
-        // console.log(json);
-        // this.tasksService.fetchTasks().then((json) => {
-                // const template = Handlebars.compile(document.querySelector("#task-template").innerHTML);
-                // const tasksContainer = document.querySelector("#tasks");
-                // tasksContainer.innerHTML = template();
-                // const tasks = document.querySelector('#tasks');
-                // tasks.insertAdjacentHTML('beforebegin', json[0].title);
+    async renderTasks() {
+        await this.tasksService.fetchTasks().then((json) => {
+            const taskTemplate = this.template('task');
+            json.forEach((entry) => {
+                const task = Task.fromJSON(entry);
+                const renderedTaskEntry = taskTemplate({task: task});
+                this.container.insertAdjacentHTML('beforeend', renderedTaskEntry);
+            });
+        })
     }
 
     action_taskEdit(event) {

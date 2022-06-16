@@ -3,17 +3,12 @@ export class BaseService {
         this.entries = [];
     }
 
-    get backendUrl() {
-        return 'http://localhost:3000';
-    }
-
     request(method, path, data, headers) {
         const fetchHeaders = new Headers({'content-type': 'application/json'}, ...(headers || {}));
-        const url = this.backendUrl + path;
 
         // TODO: add auth headers
 
-        return fetch(url, {
+        return fetch(path, {
             method: method,
             headers: fetchHeaders,
             body: JSON.stringify(data)
