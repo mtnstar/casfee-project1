@@ -1,10 +1,7 @@
 export class BaseService {
-    constructor() {
-        this.entries = [];
-    }
 
-    request(method, path, data, headers) {
-        const fetchHeaders = new Headers({'content-type': 'application/json'}, ...(headers || {}));
+    request(method, path, data) {
+        const fetchHeaders = new Headers({'content-type': 'application/json'});
 
         // TODO: add auth headers
 
