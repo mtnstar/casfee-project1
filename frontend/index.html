@@ -4,26 +4,27 @@
   <meta charset="UTF-8">
   <title>Note App</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
   <script src="js/app.js" type="module" defer></script>
 
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="styles/index.css">
 
   <script id="tasks-task-template" type="text/x-handlebars-template">
     <div class="task">
       <div class="task-row">
-        <div class="task-c1">{{task.title}}</div>
-        <div class="task-c2">{{task.description}}</div>
-        <div class="task-c3">*****</div>
+        <div class="task-c1">{{task.duedate}}</div>
+        <div class="task-c2">{{task.title}}</div>
+        <div class="task-c3">{{task.importance}}</div>
         <div class="task-c4">
           <button id="taskEdit">Edit</button>
         </div>
       </div>
       <div class="task-row">
         <div class="task-c1">
-          <input type="checkbox" />
-          <label>Open</label>
+          {{task.finished}}
         </div>
-        <div class="task-c2-3">Anrufen</div>
+        <div class="task-c2-3">{{task.description}}</div>
       </div>
     </div>
   </script>
@@ -63,15 +64,15 @@
 
         <br />
 
-        <div class="control">
-          <input class="check" id="finished" type="checkbox" name="finished" />
-          <label class="check" for="finished">Finished</label>
-        </div>
+        <label for="duedate">Due Date</label>
+        <input id="duedate" type="date" name="duedate" />
 
         <br />
 
-        <label for="duedate">Due Date</label>
-        <input id="duedate" type="date" name="duedate" />
+        <div>
+          <input class="check" id="finished" type="checkbox" name="finished" />
+          <label class="check" for="finished">Finished</label>
+        </div>
 
         <br />
 

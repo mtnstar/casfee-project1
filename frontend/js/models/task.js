@@ -3,7 +3,7 @@ export class Task {
         this.id = id;
         this.title = title;
         this.importance = importance;
-        this.finished = finished;
+        this.finished = Boolean(finished);
         this.duedate = duedate;
         this.description = description;
     }

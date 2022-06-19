@@ -44,6 +44,11 @@ button:focus {
     height: 80px;
 }
 
+.task .check {
+    display: inline-block;
+    width: unset;
+}
+
 .task-row {
     display: flex;
     flex-direction: row;
@@ -68,7 +73,7 @@ button:focus {
 
 .task-c4 {
     flex-grow: 1;
-    width: 30px;
+    width: 10%;
 }
 
 #task-form input,

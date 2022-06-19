@@ -1,4 +1,5 @@
 import {Task} from "../models/task.js";
+import {TaskDecorator} from "../decorators/task-decorator.js";
 import {BaseComponent} from "./base-component.js";
 
 export class TasksComponent extends BaseComponent {
@@ -12,7 +13,9 @@ export class TasksComponent extends BaseComponent {
             const taskTemplate = this.template('task');
             json.forEach((entry) => {
                 const task = Task.fromJSON(entry);
-                const renderedTaskEntry = taskTemplate({task: task});
+                const decoratedTask = new TaskDecorator(task);
+                const renderedTaskEntry = taskTemplate({task: decoratedTask},
+                    { allowProtoPropertiesByDefault: true });
                 this.container.insertAdjacentHTML('beforeend', renderedTaskEntry);
             });
         })

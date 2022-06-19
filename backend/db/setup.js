@@ -31,9 +31,10 @@ async function createTasks() {
 }
 
 async function insertTask() {
-    await db.run(`
-      INSERT INTO tasks (title, importance, finished, duedate, description)
-      VALUES ("task", 3, false, "15.6.2022", "seeded entry");
+  const duedate = new Date('2022-06-15').toISOString();
+  await db.run(`
+    INSERT INTO tasks (title, importance, finished, duedate, description)
+    VALUES ("task", 3, false, "${duedate}", "seeded entry");
   `);
 }
 
