@@ -25,7 +25,8 @@ async function createTasks() {
       importance INTEGER DEFAULT 1 NOT NULL,
       finished BOOLEAN DEFAULT false NOT NULL,
       duedate TEXT NOT NULL,
-      description VARCHAR
+      description VARCHAR,
+      createdAt TEXT NOT NULL
     );
   `);
 }
@@ -37,11 +38,14 @@ function getRandomDate(from, to) {
 }
 
 async function insertTasks() {
+  let importance = 1;
   ['Geburi Sarah', 'Ferien', 'Einkaufen'].forEach((title) => {
     const duedate = getRandomDate(new Date('2022-06-15'), new Date()).toISOString();
+    const createdAt = new Date().toISOString();
     db.run(`
-      INSERT INTO tasks (title, importance, finished, duedate, description)
-      VALUES ("${title}", 3, ${Math.random() > 0.5}, "${duedate}", "seeded entry");`);
+      INSERT INTO tasks (title, importance, finished, duedate, description, createdAt)
+      VALUES ("${title}", ${importance}, ${Math.random() > 0.5}, "${duedate}", "seeded entry", "${createdAt}");`);
+    importance++;
   })
 }
 

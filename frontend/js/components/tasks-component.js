@@ -8,8 +8,11 @@ export class TasksComponent extends BaseComponent {
     }
 
     renderTasks() {
+        this.container.innerHTML = '';
         const taskTemplate = this.template('task');
         this.tasksService.entries.forEach((task) => {
+            if (this.hideCompleted(task)) return;
+
             const decoratedTask = new TaskDecorator(task);
             const renderedTaskEntry = taskTemplate({task: decoratedTask},
                 { allowProtoPropertiesByDefault: true });
@@ -21,9 +24,13 @@ export class TasksComponent extends BaseComponent {
         console.log(event);
     }
 
+    hideCompleted(task) {
+        return this.tasksService.filterCompleted &&
+            task.finished;
+    }
+
     initialize() {
         this.tasksService.fetchTasks().then(() => {
-            console.log(this.tasksService.entries);
             this.renderTasks();
             this.attachEventHandlers();
         });

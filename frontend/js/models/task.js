@@ -1,11 +1,12 @@
 export class Task {
-    constructor(id, title, importance, finished, duedate, description) {
+    constructor(id, title, importance, finished, duedate, description, createdAt) {
         this.id = id;
         this.title = title;
         this.importance = importance;
         this.finished = Boolean(finished);
         this.duedate = duedate;
         this.description = description;
+        this.createdAt = createdAt;
     }
 
     static fromJSON(json) {
@@ -15,6 +16,7 @@ export class Task {
             json.importance,
             json.finished,
             json.duedate,
-            json.description);
+            json.description,
+            json.createdAt);
     }
 }

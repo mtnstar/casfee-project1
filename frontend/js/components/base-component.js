@@ -36,7 +36,7 @@ export class BaseComponent {
     buttonClick(event) {
         const id = event.target.getAttribute("id");
         const action = `this.action_${id}`;
-        eval(action)(event);
+        eval(action).bind(this)(event);
     }
 
     initialize() {

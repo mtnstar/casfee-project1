@@ -32,6 +32,10 @@ button:focus {
     filter: invert(100%);
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .btnbar {
     display: flex;
     justify-content: space-between;

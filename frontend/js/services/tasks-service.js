@@ -5,7 +5,8 @@ export class TasksService extends BaseService {
 
     constructor() {
         super();
-        this.orderBy = 'duedate';
+        this.orderByAttribute = 'duedate';
+        this.filterCompleted = false;
     }
 
     fetchTasks() {
@@ -20,42 +21,24 @@ export class TasksService extends BaseService {
             })
     }
 
-    orderTasks(orderBy) {
-        if (orderBy) this.orderBy = orderBy;
+    orderTasks(attribute) {
+        attribute ||= this.orderByAttribute;
+        this.orderByAttribute = attribute;
 
-        this.orderBy_duedate();
-    }
-
-    orderByTitle() {
         this.entries = this.entries.sort((a,b) => {
-            if ( a.title < b.title ) {
+            if ( a[attribute] < b[attribute] ) {
                 return -1;
             }
-            if ( a.title > b.title ) {
+            if ( a[attribute] > b[attribute] ) {
                 return 1;
             }
             return 0;
         })
+
+        if (attribute == 'importance') this.entries = this.entries.reverse();
     }
 
-    orderBy_duedate() {
-        this.entries = this.entries.sort((a,b) => {
-            if ( a.duedate < b.duedate ) {
-                return -1;
-            }
-            if ( a.duedate > b.duedate ) {
-                return 1;
-            }
-            return 0;
-        })
-    }
-
-    orderByCreatedAt() {
-    }
-
-    orderByImporatance() {
-    }
-
-    filterCompleted() {
+    toggleFilterCompleted() {
+        this.filterCompleted = !this.filterCompleted;
     }
 }
