@@ -30,18 +30,25 @@ async function createTasks() {
   `);
 }
 
-async function insertTask() {
-  const duedate = new Date('2022-06-15').toISOString();
-  await db.run(`
-    INSERT INTO tasks (title, importance, finished, duedate, description)
-    VALUES ("task", 3, false, "${duedate}", "seeded entry");
-  `);
+function getRandomDate(from, to) {
+    from = from.getTime();
+    to = to.getTime();
+    return new Date(from + Math.random() * (to - from));
+}
+
+async function insertTasks() {
+  ['Geburi Sarah', 'Ferien', 'Einkaufen'].forEach((title) => {
+    const duedate = getRandomDate(new Date('2022-06-15'), new Date()).toISOString();
+    db.run(`
+      INSERT INTO tasks (title, importance, finished, duedate, description)
+      VALUES ("${title}", 3, ${Math.random() > 0.5}, "${duedate}", "seeded entry");`);
+  })
 }
 
 async function run() {
     await createDB(); 
     await createTasks();
-    await insertTask();
+    await insertTasks();
 }
 
 run().catch((ex) => {
