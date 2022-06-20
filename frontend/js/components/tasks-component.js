@@ -5,6 +5,7 @@ export class TasksComponent extends BaseComponent {
     constructor(app) {
         super(app);
         this.tasksService = app.tasksService;
+        this.taskForm = app.taskFormComponent;
     }
 
     renderTasks() {
@@ -21,7 +22,8 @@ export class TasksComponent extends BaseComponent {
     }
 
     action_taskEdit(event) {
-        console.log(event);
+        const taskId = event.target.dataset.id;
+        this.taskForm.renderForm(taskId);
     }
 
     hideCompleted(task) {

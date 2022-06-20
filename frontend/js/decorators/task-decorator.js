@@ -3,6 +3,10 @@ export class TaskDecorator {
         this.task = task;
     }
 
+    get id() {
+        return this.task.id;
+    }
+
     get duedate() {
         return moment(this.task.duedate).fromNow();
     }

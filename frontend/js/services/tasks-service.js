@@ -10,7 +10,7 @@ export class TasksService extends BaseService {
     }
 
     fetchTasks() {
-        return this.request('get', '/api/tasks')
+        return this.request('GET', '/api/tasks')
             .then((json) => {
                 this.entries = json.map((entry) => {
                     return Task.fromJSON(entry);
@@ -19,6 +19,17 @@ export class TasksService extends BaseService {
             .then(() => {
                 this.orderTasks();
             })
+    }
+
+    getTask(taskId) {
+        return this.entries.find((e) => {
+            return e.id == taskId;
+        });
+    }
+
+    update(task) {
+        const data = { task };
+        return this.request('PATCH', '/api/tasks', data);
     }
 
     orderTasks(attribute) {

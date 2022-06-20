@@ -7,9 +7,9 @@ class App {
     constructor() {
         this.initServices();
 
+        this.taskFormComponent = new TaskFormComponent(this);
         this.tasksComponent = new TasksComponent(this);
         this.toolbarComponent = new ToolbarComponent(this);
-        this.taskFormComponent = new TaskFormComponent(this);
 
         this.tasksComponent.initialize();
         this.toolbarComponent.initialize();

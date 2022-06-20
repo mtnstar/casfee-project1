@@ -4,7 +4,7 @@ export class Task {
         this.title = title;
         this.importance = importance;
         this.finished = Boolean(finished);
-        this.duedate = duedate;
+        this.duedate = new Date(duedate);
         this.description = description;
         this.createdAt = createdAt;
     }
