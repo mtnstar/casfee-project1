@@ -37,24 +37,24 @@ export class TaskAdapter extends DbAdapter {
         })
     }
 
-    update(task) {
+    update(id, task) {
         return new Promise((resolve, reject) => {
             this.db.run(`
               UPDATE tasks
-              SET title = ${task.title}, importance = ${task.importance},
-              finished = ${task.finished}, duedate = ${task.duedate},
-              description = ${task.description}
-              WHERE id = ${task.id};
+              SET title = "${task.title}", importance = "${task.importance}",
+              finished = ${task.finished}, duedate = "${task.duedate}",
+              description = "${task.description}"
+              WHERE id = ${id};
             `);
 
             resolve();
         })
     }
 
-    destroy(task) {
+    destroy(id) {
         return new Promise((resolve, reject) => {
             this.db.run(`
-                DELETE FROM tasks WHERE id = ${task.id};
+                DELETE FROM tasks WHERE id = ${id};
             `);
 
             resolve();

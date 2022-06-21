@@ -28,8 +28,9 @@ export class TasksService extends BaseService {
     }
 
     update(task) {
-        const data = { task };
-        return this.request('PATCH', '/api/tasks', data);
+        const data = { task: task };
+        const id = task.id;
+        return this.request('PATCH', `/api/tasks/${id}`, data);
     }
 
     orderTasks(attribute) {
