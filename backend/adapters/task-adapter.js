@@ -17,7 +17,8 @@ export class TaskAdapter extends DbAdapter {
                         row['importance'],
                         row['finished'],
                         row['duedate'],
-                        row['description']);
+                        row['description'],
+                        row['createdAt']);
                     entries.push(entry);
                 });
 
@@ -27,13 +28,12 @@ export class TaskAdapter extends DbAdapter {
     }
 
     create(task) {
-        const createdAt = new Date().toISOString();
         return new Promise((resolve, reject) => {
             this.db.run(`
               INSERT INTO tasks (title, importance, finished, duedate, description, createdAt)
               VALUES ("${task.title}", ${task.importance},
               ${task.finished}, "${task.duedate}",
-              "${task.description}", "${createdAt}");
+              "${task.description}", "${new Date().toISOString()}");
             `);
 
             resolve();
