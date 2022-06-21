@@ -7,26 +7,39 @@ export class TaskFormComponent extends BaseComponent {
         this.tasksService = app.tasksService;
         Handlebars.registerHelper({
             importanceOptions: () => [1,2,3,4,5],
-            duedateValue: (task) => task.duedate.toISOString().substring(0,10)
+            duedateValue: (task) => {
+                if (task.duedate) {
+                    return task.duedate.toISOString().substring(0,10)
+                }
+            }
         });
     }
 
     renderForm(taskId) {
-        const task = this.tasksService.getTask(taskId);
+        const task = taskId ? this.tasksService.getTask(taskId) : new Task();
         this.container.innerHTML = this.template()({task: task});
         this.attachEventHandlers();
     }
 
-    // action_createTask(event) {
-        // console.log(event);
-    // }
+    action_createTask(event) {
+        event.preventDefault();
+        const form = event.target.form;
+        const task = this.taskFromFormData(form);
+        this.tasksService.create(task).then(() => {
+            this.tasksService.fetchTasks().then(() => {
+                this.app.tasksComponent.renderTasks();
+            });
+        });
+    }
 
     action_updateTask(event) {
         event.preventDefault();
         const form = event.target.form;
         const task = this.taskFromFormData(form);
         this.tasksService.update(task).then(() => {
-            console.log(event);
+            this.tasksService.fetchTasks().then(() => {
+                this.app.tasksComponent.renderTasks();
+            });
         });
     }
 

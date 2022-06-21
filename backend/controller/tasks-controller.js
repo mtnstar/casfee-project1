@@ -14,13 +14,17 @@ export class TasksController {
 
     update = async(req, res) => {
         const task = Task.fromJSON(req.body.task);
-        res.json(await this.taskAdapter.update(req.params.id, task));
+        await this.taskAdapter.update(req.params.id, task);
+        res.json([{task: task}]);
+    }
+
+    create = async(req, res) => {
+        const task = Task.fromJSON(req.body.task);
+        await this.taskAdapter.create(task);
+        res.json([{task: task}]);
     }
 
     // show(){
-    // }
-
-    // create() {
     // }
 
     // delete() {

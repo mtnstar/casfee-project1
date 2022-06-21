@@ -6,6 +6,7 @@ export class ToolbarComponent extends BaseComponent {
         super(app);
         this.tasksComponent = app.tasksComponent;
         this.tasksService = app.tasksService;
+        this.taskForm = app.taskFormComponent;
     }
 
     renderToolbar() {
@@ -17,35 +18,35 @@ export class ToolbarComponent extends BaseComponent {
     }
 
     action_createTask(event) {
-        console.log(event);
+        this.taskForm.renderForm();
     }
 
     action_orderByTitle() {
         this.tasksService.orderTasks('title');
-        this.afterAction();
+        this.reloadTasks();
     }
 
     action_orderByDuedate() {
         this.tasksService.orderTasks('duedate');
-        this.afterAction();
+        this.reloadTasks();
     }
 
     action_orderByImportance() {
         this.tasksService.orderTasks('importance');
-        this.afterAction();
+        this.reloadTasks();
     }
 
     action_orderByCreatedAt() {
         this.tasksService.orderTasks('createdAt');
-        this.afterAction();
+        this.reloadTasks();
     }
 
     action_filterCompleted() {
         this.tasksService.toggleFilterCompleted();
-        this.afterAction();
+        this.reloadTasks();
     }
 
-    afterAction() {
+    reloadTasks() {
         this.tasksComponent.renderTasks();
         this.renderToolbar();
     }

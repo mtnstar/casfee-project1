@@ -4,9 +4,9 @@ export class Task {
         this.title = title;
         this.importance = importance;
         this.finished = Boolean(finished);
-        this.duedate = new Date(duedate);
+        this.duedate = duedate ? new Date(duedate) : new Date();
         this.description = description;
-        this.createdAt = createdAt;
+        this.createdAt = new Date(createdAt);
     }
 
     static fromJSON(json) {

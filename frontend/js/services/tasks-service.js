@@ -33,6 +33,11 @@ export class TasksService extends BaseService {
         return this.request('PATCH', `/api/tasks/${id}`, data);
     }
 
+    create(task) {
+        const data = { task: task };
+        return this.request('POST', `/api/tasks`, data);
+    }
+
     orderTasks(attribute) {
         attribute ||= this.orderByAttribute;
         this.orderByAttribute = attribute;

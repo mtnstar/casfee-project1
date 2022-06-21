@@ -27,10 +27,13 @@ export class TaskAdapter extends DbAdapter {
     }
 
     create(task) {
+        const createdAt = new Date().toISOString();
         return new Promise((resolve, reject) => {
             this.db.run(`
-              INSERT INTO tasks (title, importance, finished, duedate, description)
-              VALUES (${task.title}, ${task.importance}, ${task.finished}, ${task.duedate}, ${task.description});
+              INSERT INTO tasks (title, importance, finished, duedate, description, createdAt)
+              VALUES ("${task.title}", ${task.importance},
+              ${task.finished}, "${task.duedate}",
+              "${task.description}", "${createdAt}");
             `);
 
             resolve();

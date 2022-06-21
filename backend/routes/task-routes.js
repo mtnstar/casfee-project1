@@ -5,7 +5,7 @@ import {tasksController} from '../controller/tasks-controller.js';
 
 router.get("/", tasksController.index);
 router.patch("/:id", tasksController.update);
-// router.post("/", tasksController.create);
+router.post("/", tasksController.create);
 // router.get("/:id/", tasksController.show);
 // router.delete("/:id/", tasksController.delete);
 
