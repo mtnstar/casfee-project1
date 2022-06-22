@@ -7,6 +7,9 @@ export class ToolbarComponent extends BaseComponent {
         this.tasksComponent = app.tasksComponent;
         this.tasksService = app.tasksService;
         this.taskForm = app.taskFormComponent;
+        const root = document.querySelector(':root');
+        this.style = root.style;
+        this.darkMode = false;
     }
 
     renderToolbar() {
@@ -44,6 +47,20 @@ export class ToolbarComponent extends BaseComponent {
     action_filterCompleted() {
         this.tasksService.toggleFilterCompleted();
         this.reloadTasks();
+    }
+
+    action_toggleStyle() {
+        let fontColor = 'black';
+        let backgroundColor = 'white';
+        this.darkMode = !this.darkMode;
+
+        if (this.darkMode) {
+            fontColor = 'white';
+            backgroundColor = 'black';
+        }
+
+        this.style.setProperty('--font-color', fontColor);
+        this.style.setProperty('--background-color', backgroundColor);
     }
 
     reloadTasks() {
