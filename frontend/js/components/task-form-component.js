@@ -61,7 +61,7 @@ export class TaskFormComponent extends BaseComponent {
         const id = form.id.value;
         const title = form.title.value;
         const importance = form.importance.value;
-        const finished = form.finished.value;
+        const finished = form.finished.checked;
         const duedate = form.duedate.value;
         const description = form.description.value;
         return new Task(id, title, importance, finished, duedate, description);
