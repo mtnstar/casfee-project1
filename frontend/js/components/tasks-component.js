@@ -19,6 +19,7 @@ export class TasksComponent extends BaseComponent {
                 { allowProtoPropertiesByDefault: true });
             this.container.insertAdjacentHTML('beforeend', renderedTaskEntry);
         });
+        this.attachEventHandlers();
     }
 
     action_taskEdit(event) {
@@ -34,7 +35,6 @@ export class TasksComponent extends BaseComponent {
     initialize() {
         this.tasksService.fetchTasks().then(() => {
             this.renderTasks();
-            this.attachEventHandlers();
         });
     }
 }

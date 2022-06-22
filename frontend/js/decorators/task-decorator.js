@@ -8,7 +8,15 @@ export class TaskDecorator {
     }
 
     get duedate() {
-        return moment(this.task.duedate).fromNow();
+        const tomorrow = moment().add(1, 'day').endOf('day')
+        const duedate = moment(this.task.duedate);
+        if (duedate.isSame(new Date(), "day")) {
+            return 'Today'; }
+        else if (duedate.isSame(tomorrow, "day")) {
+            return 'Tomorrow';
+        } else {
+            return duedate.fromNow();
+        }
     }
 
     get title() {

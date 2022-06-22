@@ -21,6 +21,10 @@ export class TaskFormComponent extends BaseComponent {
         this.attachEventHandlers();
     }
 
+    action_overview(event) {
+        this.hideForm();
+    }
+
     action_createTask(event) {
         event.preventDefault();
         const form = event.target.form;
@@ -30,6 +34,11 @@ export class TaskFormComponent extends BaseComponent {
                 this.app.tasksComponent.renderTasks();
             });
         });
+    }
+
+    action_createOverviewTask(event) {
+        this.action_createTask(event);
+        this.hideForm();
     }
 
     action_updateTask(event) {
@@ -43,6 +52,11 @@ export class TaskFormComponent extends BaseComponent {
         });
     }
 
+    action_updateOverviewTask(event) {
+        this.action_updateTask(event);
+        this.hideForm();
+    }
+
     taskFromFormData(form) {
         const id = form.id.value;
         const title = form.title.value;
@@ -51,6 +65,10 @@ export class TaskFormComponent extends BaseComponent {
         const duedate = form.duedate.value;
         const description = form.description.value;
         return new Task(id, title, importance, finished, duedate, description);
+    }
+
+    hideForm() {
+        this.container.innerHTML = '';
     }
 
     initialize() {
