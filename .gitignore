@@ -3,3 +3,4 @@ cypress/videos
 node_modules
 backend/tmp
 backend/log
+backend/db/app.db
