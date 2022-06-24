@@ -5,8 +5,10 @@ describe('project one notes app', () => {
     cy.visit('http://localhost:3333')
   })
 
-  it('displays two todo items by default', () => {
-    cy.get('h1').should('have.text', 'Note App')
+  it('lists todos', () => {
+    cy.get('#tasks .task-c2').contains('Geburi Sarah')
+    cy.get('#tasks .task-c2').contains('Ferien')
+    cy.get('#tasks .task-c2').contains('Einkaufen')
   })
 
 })
