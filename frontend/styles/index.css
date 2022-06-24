@@ -36,14 +36,14 @@ button:focus {
     filter: invert(100%);
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 .btnbar {
     display: flex;
     justify-content: space-between;
     margin: 10px;
+}
+
+#tasks {
+    margin-top: 30px;
 }
 
 .task {
@@ -82,6 +82,15 @@ button:focus {
 .task-c4 {
     flex-grow: 1;
     width: 10%;
+}
+
+.task .importance {
+    margin-right: 15%;
+    margin-left: auto;
+}
+
+#taskEdit {
+    margin-top: 30%;
 }
 
 #task-form input,

@@ -15,7 +15,10 @@
       <div class="task-row">
         <div class="task-c1">{{task.duedate}}</div>
         <div class="task-c2">{{task.title}}</div>
-        <div class="task-c3">{{task.importance}}</div>
+        <div class="task-c3">
+          <div class="importance">
+            {{task.importance}}</div>
+          </div>
         <div class="task-c4">
           <button id="taskEdit" data-id={{task.id}}>Edit</button>
         </div>
